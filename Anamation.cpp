@@ -128,7 +128,7 @@ void TurnAnmiation(const stAnimationInfo& AnimationInfo)
 
 	SetCursorVisibility(false);
 
-	for (short i = 1; i <= AnimationInfo.FramesRepeted; i++)
+	for (short i = 1; i <= AnimationInfo.FramesRepeted/2; i++)
 	{
 
 		for (const vector<string>& Frame : vAllFrames)
@@ -726,8 +726,10 @@ void WelcomeScreen()
 
 int main()
 {
-	WelcomeScreen();
-	StartProgram();
+	//WelcomeScreen();
+	//StartProgram();
 
-	return 0;
+
+
+
 }
