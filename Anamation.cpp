@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include <windows.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -101,13 +102,20 @@ vector<vector<string>> LoadAllFrames(const vector<string>& vFileNames)
 	return vAllFrames;
 }
 
-string GetFormAsAText(const vector <string>& vFrame)
+string RightAliment(short NumberOfAlginment)
+{
+	string S1 = "";
+	for (short i = 1; i <= NumberOfAlginment - 1; i++) S1 += "\t";
+	return S1;
+}
+
+string GetFormAsAText(const vector <string>& vFrame, string TestAliment)
 {
 	string TheForm = "";
 
 	for (const string& Line : vFrame)
 	{
-		TheForm += Line + "\n";
+		TheForm += TestAliment + Line + "\n";
 	}
 
 	return TheForm;
@@ -116,7 +124,7 @@ string GetFormAsAText(const vector <string>& vFrame)
 void PrintAnmiation(const vector <string>& vFrame, short Delay)
 {
 	system("cls");
-	string TheForm = GetFormAsAText(vFrame);
+	string TheForm = GetFormAsAText(vFrame, RightAliment(8));
 	cout << TheForm;
 	Sleep(Delay);
 }
@@ -128,7 +136,8 @@ void TurnAnmiation(const stAnimationInfo& AnimationInfo)
 
 	SetCursorVisibility(false);
 
-	for (short i = 1; i <= AnimationInfo.FramesRepeted/2; i++)
+
+	for (short i = 1; i <= AnimationInfo.FramesRepeted / 2; i++)
 	{
 
 		for (const vector<string>& Frame : vAllFrames)
@@ -726,10 +735,9 @@ void WelcomeScreen()
 
 int main()
 {
-	//WelcomeScreen();
-	//StartProgram();
 
+	WelcomeScreen();
+	StartProgram();
 
-
-
+	return 0;
 }
